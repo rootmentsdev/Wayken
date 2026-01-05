@@ -1,9 +1,25 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import WaykenLogo from '../../assets/WaykenLogo.png'
 
 const Footer = () => {
+  const navigate = useNavigate()
+
+  const scrollToSection = (sectionId) => {
+    // Navigate to home page first, then scroll to section
+    navigate('/')
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }, 100)
+  }
   return (
     <footer 
       className="py-5"
@@ -18,29 +34,14 @@ const Footer = () => {
           {/* Brand Section */}
           <Col lg={5} md={6} className="mb-4 mb-lg-0">
             <div className="mb-4">
-              <div className="d-flex flex-column">
-                <span 
-                  className="fw-bold text-dark" 
-                  style={{ 
-                    fontSize: '1.5rem', 
-                    letterSpacing: '0.15em',
-                    fontFamily: 'Manrope, sans-serif',
-                    fontWeight: 700
-                  }}
-                >
-                  WAYKEN
-                </span>
-                <small 
-                  className="text-secondary" 
-                  style={{ 
-                    fontSize: '0.6rem', 
-                    letterSpacing: '0.2em',
-                    fontWeight: 500
-                  }}
-                >
-                  HOLDINGS
-                </small>
-              </div>
+              <img 
+                src={WaykenLogo} 
+                alt="Wayken Holdings" 
+                style={{ 
+                  height: '35px',
+                  width: 'auto'
+                }}
+              />
             </div>
             
             <p 
@@ -115,22 +116,22 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link 
-                  to="/portfolio" 
-                  className="text-secondary text-decoration-none"
+                <button
+                  onClick={() => scrollToSection('portfolio-section')}
+                  className="btn btn-link text-secondary text-decoration-none p-0"
                   style={{ fontSize: '14px' }}
                 >
                   Our Portfolio
-                </Link>
+                </button>
               </li>
               <li className="mb-2">
-                <Link 
-                  to="/about" 
-                  className="text-secondary text-decoration-none"
+                <button
+                  onClick={() => scrollToSection('leadership-section')}
+                  className="btn btn-link text-secondary text-decoration-none p-0"
                   style={{ fontSize: '14px' }}
                 >
                   Leadership
-                </Link>
+                </button>
               </li>
               <li className="mb-2">
                 <Link 

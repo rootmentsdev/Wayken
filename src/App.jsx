@@ -5,18 +5,24 @@ import About from './pages/About'
 import Service from './pages/Service'
 import Portfolio from './pages/Portfolio'
 import Blog from './pages/Blog'
+import Contact from './pages/Contact'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="service" element={<Service />} />
-        <Route path="portfolio" element={<Portfolio />} />
-        <Route path="blog" element={<Blog />} />
-      </Route>
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="service" element={<Service />} />
+          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
+    </>
   )
 }
 

@@ -26,7 +26,7 @@ const About = () => {
           <Row className="justify-content-center text-center mb-4 mb-md-5">
             <Col xs={12} lg={10}>
               {/* About Us Badge with Lines */}
-              <div className="d-flex align-items-center justify-content-center mb-3 mb-md-4">
+              <div className="d-flex align-items-center justify-content-center mb-3 mb-md-4 d-none d-md-flex">
                 <div 
                   className="flex-grow-1 me-2 me-md-4 d-none d-sm-block"
                   style={{
@@ -60,67 +60,125 @@ const About = () => {
               
               {/* Main Heading */}
               <h1 
-                className="text-white mb-3 mb-md-4"
+                className="text-white mb-3 mb-md-4 about-header"
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'DM Sans, sans-serif',
                   fontWeight: 600,
-                  fontSize: 'clamp(28px, 5vw, 46px)',
-                  lineHeight: '114%'
+                  fontSize: 'clamp(42px, 8vw, 62px)',
+                  lineHeight: '100%',
+                  letterSpacing: '-0.03em',
+                  textAlign: 'center'
                 }}
               >
-                Why Wayken <span style={{ fontStyle: 'italic', color: '#B553B9' }}>Exists</span>
+                <span className="d-block d-md-inline">Why Wayken</span>{' '}
+                <span style={{ fontStyle: 'italic', color: '#B553B9' }} className="d-block d-md-inline">
+                  Exists
+                </span>
               </h1>
               
               {/* Description Text */}
-              <div className="mx-auto px-3 px-md-0" style={{ maxWidth: '1000px' }}>
+              <div className="about-description" style={{ 
+                maxWidth: '1000px',
+                margin: '0 auto',
+                padding: '0 15px'
+              }}>
+                {/* Desktop version - single paragraph */}
                 <p 
-                  className="text-white-50 mb-2"
+                  className="text-white-50 d-none d-md-block"
                   style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    lineHeight: '1.6'
+                    fontSize: '16px',
+                    lineHeight: '1.8',
+                    textAlign: 'center'
                   }}
                 >
-                  In a world driven by fast growth and faster exits, many good businesses are forced into decisions that don't serve them in the long run.
+                  In a world driven by fast growth and faster exits, many good businesses are forced into decisions that don't serve them in the long run. We believe companies deserve the time, trust, and support needed to grow properly. Wayken was created to be a steady partner – one that stays committed through every stage of the journey.
                 </p>
-                <p 
-                  className="text-white-50 mb-2"
-                  style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    lineHeight: '1.6'
-                  }}
-                >
-                  We believe companies deserve the time, trust, and support needed to grow properly. Wayken was created to be a steady partner –
-                </p>
-                <p 
-                  className="text-white-50"
-                  style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    lineHeight: '1.6'
-                  }}
-                >
-                  one that stays committed through every stage of the journey.
-                </p>
+
+                {/* Mobile version - multiple paragraphs */}
+                <div className="d-block d-md-none">
+                  <p 
+                    className="text-white-50 mb-2"
+                    style={{
+                      fontSize: '16px',
+                      lineHeight: '1.8',
+                      textAlign: 'center'
+                    }}
+                  >
+                    In a world driven by fast growth and faster exits, many good businesses are forced into decisions that don't serve them in the long run.
+                  </p>
+                  <p 
+                    className="text-white-50 mb-2"
+                    style={{
+                      fontSize: '16px',
+                      lineHeight: '1.8',
+                      textAlign: 'center'
+                    }}
+                  >
+                    We believe companies deserve the time, trust, and support needed to grow properly. Wayken was created to be a steady partner –
+                  </p>
+                  <p 
+                    className="text-white-50"
+                    style={{
+                      fontSize: '16px',
+                      lineHeight: '1.8',
+                      textAlign: 'center'
+                    }}
+                  >
+                    one that stays committed through every stage of the journey.
+                  </p>
+                </div>
               </div>
+
+              {/* Add responsive styles */}
+              <style>{`
+                @media (max-width: 768px) {
+                  .about-header {
+                    text-align: left !important;
+                  }
+                  .about-description {
+                    text-align: left !important;
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                  }
+                  .about-description p {
+                    text-align: left !important;
+                  }
+                  .about-description div {
+                    text-align: left !important;
+                  }
+                  .about-description div p {
+                    text-align: left !important;
+                  }
+                }
+                
+                /* iPad specific styles for equal card heights */
+                @media (min-width: 768px) and (max-width: 1024px) {
+                  .vision-mission-card {
+                    min-height: 280px !important;
+                  }
+                }
+              `}</style>
             </Col>
           </Row>
 
           {/* Cards Section */}
-          <Row className="justify-content-center g-4">
+          <Row className="justify-content-center g-3 g-md-4">
             {/* Vision Card */}
-            <Col xs={12} lg={5} md={6}>
+            <Col xs={12} sm={10} md={6} lg={5} xl={5}>
               <Card 
-                className="border-0 p-3 p-md-4"
+                className="border-0 h-100 vision-mission-card"
                 style={{
                   background: 'linear-gradient(144.67deg, #030140 -2.61%, #783691 50.99%, #8A3E9D 51.88%, #7C3894 55.03%, #AB4EB2 124.89%, #B553B9 155.17%)',
-                  borderRadius: '16px',
-                  minHeight: '200px'
+                  borderRadius: '16px'
                 }}
               >
-                <Card.Body className="text-white p-0">
+                <Card.Body className="text-white p-3 p-sm-4 d-flex flex-column">
                   {/* Vision Header */}
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-center mb-3 mb-md-4">
                     <div 
-                      className="me-3 mt-4"
+                      className="me-2 me-md-3"
                       style={{
                         width: '40px',
                         height: '2px',
@@ -128,9 +186,9 @@ const About = () => {
                       }}
                     ></div>
                     <h5 
-                      className="mb-0 text-uppercase mt-4"
+                      className="mb-0 text-uppercase"
                       style={{
-                        fontSize: '14px',
+                        fontSize: 'clamp(12px, 2vw, 14px)',
                         fontWeight: 500,
                         letterSpacing: '1px',
                         fontFamily: 'Manrope, sans-serif'
@@ -142,40 +200,36 @@ const About = () => {
                   
                   {/* Vision Text */}
                   <p 
-                    className="mb-0"
+                    className="mb-0 flex-grow-1"
                     style={{
                       fontFamily: 'Plus Jakarta Sans, sans-serif',
                       fontWeight: 500,
-                      fontSize: '16px',
-                      lineHeight: '180%',
+                      fontSize: 'clamp(14px, 2.5vw, 16px)',
+                      lineHeight: '1.6',
                       letterSpacing: '0%'
                     }}
                   >
                     To support and build businesses that matter – businesses designed to last, grow responsibly, and 
                     contribute meaningfully over the long term.
                   </p>
-                  
-                  {/* Decorative Square */}
-                 
                 </Card.Body>
               </Card>
             </Col>
 
             {/* Mission Card */}
-            <Col xs={12} lg={5} md={6}>
+            <Col xs={12} sm={10} md={6} lg={5} xl={5}>
               <Card 
-                className="border-0 p-3 p-md-4"
+                className="border-0 h-100 vision-mission-card"
                 style={{
                   background: 'linear-gradient(144.67deg, #030140 -2.61%, #783691 50.99%, #8A3E9D 51.88%, #7C3894 55.03%, #AB4EB2 124.89%, #B553B9 155.17%)',
-                  borderRadius: '16px',
-                  minHeight: '200px'
+                  borderRadius: '16px'
                 }}
               >
-                <Card.Body className="text-white p-0">
+                <Card.Body className="text-white p-3 p-sm-4 d-flex flex-column">
                   {/* Mission Header */}
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-center mb-3 mb-md-4">
                     <div 
-                      className="me-3 mt-4"
+                      className="me-2 me-md-3"
                       style={{
                         width: '40px',
                         height: '2px',
@@ -183,9 +237,9 @@ const About = () => {
                       }}
                     ></div>
                     <h5 
-                      className="mb-0 mt-4 text-uppercase"
+                      className="mb-0 text-uppercase"
                       style={{
-                        fontSize: '14px',
+                        fontSize: 'clamp(12px, 2vw, 14px)',
                         fontWeight: 500,
                         letterSpacing: '1px',
                         fontFamily: 'Manrope, sans-serif'
@@ -197,21 +251,18 @@ const About = () => {
                   
                   {/* Mission Text */}
                   <p 
-                    className="mb-0"
+                    className="mb-0 flex-grow-1"
                     style={{
                       fontFamily: 'Plus Jakarta Sans, sans-serif',
                       fontWeight: 500,
-                      fontSize: '16px',
-                      lineHeight: '180%',
+                      fontSize: 'clamp(14px, 2.5vw, 16px)',
+                      lineHeight: '1.6',
                       letterSpacing: '0%'
                     }}
                   >
                     To partner with founders by providing patient capital, strategic guidance, and long-term commitment—helping businesses 
                     grow without compromising their values or identity.
                   </p>
-                  
-                  {/* Decorative Square */}
-                
                 </Card.Body>
               </Card>
             </Col>
@@ -248,10 +299,11 @@ const About = () => {
               <h2 
                 className="mb-4"
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'DM Sans, sans-serif',
                   fontWeight: 600,
-                  fontSize: 'clamp(32px, 5vw, 48px)',
-                  lineHeight: '1.2',
+                  fontSize: 'clamp(28px, 6vw, 54px)',
+                  lineHeight: '114%',
+                  letterSpacing: '-6%',
                   color: '#1a1a1a'
                 }}
               >
@@ -507,10 +559,11 @@ const About = () => {
               <h2 
                 className="mb-3"
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'DM Sans, sans-serif',
                   fontWeight: 600,
-                  fontSize: 'clamp(28px, 5vw, 42px)',
-                  lineHeight: '1.2',
+                  fontSize: 'clamp(28px, 6vw, 54px)',
+                  lineHeight: '114%',
+                  letterSpacing: '-6%',
                   color: '#1a1a1a'
                 }}
               >
@@ -519,10 +572,11 @@ const About = () => {
               <h2 
                 className="mb-4"
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'DM Sans, sans-serif',
                   fontWeight: 600,
-                  fontSize: 'clamp(28px, 5vw, 42px)',
-                  lineHeight: '1.2',
+                  fontSize: 'clamp(28px, 6vw, 54px)',
+                  lineHeight: '114%',
+                  letterSpacing: '-6%',
                   color: '#8A3E9D',
                   fontStyle: 'italic'
                 }}
@@ -548,10 +602,11 @@ const About = () => {
               <h2 
                 className="mb-3"
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'DM Sans, sans-serif',
                   fontWeight: 600,
-                  fontSize: 'clamp(28px, 5vw, 42px)',
-                  lineHeight: '1.2',
+                  fontSize: 'clamp(28px, 6vw, 54px)',
+                  lineHeight: '114%',
+                  letterSpacing: '-6%',
                   color: '#1a1a1a'
                 }}
               >
@@ -560,10 +615,11 @@ const About = () => {
               <h2 
                 className="mb-4"
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'DM Sans, sans-serif',
                   fontWeight: 600,
-                  fontSize: 'clamp(28px, 5vw, 42px)',
-                  lineHeight: '1.2',
+                  fontSize: 'clamp(28px, 6vw, 54px)',
+                  lineHeight: '114%',
+                  letterSpacing: '-6%',
                   color: '#8A3E9D',
                   fontStyle: 'italic'
                 }}

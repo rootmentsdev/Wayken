@@ -2,14 +2,13 @@ import { useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import SEO from '../components/SEO/SEO'
 import { submitToGoogleSheets, validateForm } from '../utils/formHandler'
 
-const Service = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -52,7 +51,7 @@ const Service = () => {
     try {
       const result = await submitToGoogleSheets({
         ...formData,
-        source: 'Service Page'
+        source: 'Contact Page'
       });
 
       if (result.success) {
@@ -85,259 +84,11 @@ const Service = () => {
   return (
     <>
       <SEO 
-        title="Services | Wayken Holdings"
-        description="Explore our professional services at Wayken Holdings"
-        keywords="wayken, holdings, services, solutions"
+        title="Contact | Wayken Holdings"
+        description="Get in touch with Wayken Holdings - Contact us for partnerships and inquiries"
+        keywords="wayken, holdings, contact, get in touch, partnerships"
       />
       
-      {/* Service Section */}
-      <div 
-        className="d-flex align-items-center"
-        style={{ 
-          backgroundColor: '#f0f0f0',
-          minHeight: '664px'
-        }}
-      >
-        <Container className="py-5">
-          {/* Header Section */}
-          <Row className="justify-content-center mb-5 service-header">
-            <Col xs={12} lg={10}>
-              {/* Main Heading */}
-              <h1 
-                className="mb-4"
-                style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontWeight: 600,
-                  fontSize: 'clamp(42px, 8vw, 62px)',
-                  lineHeight: '100%',
-                  letterSpacing: '-0.03em',
-                  color: '#1a1a1a',
-                  textAlign: 'center'
-                }}
-              >
-                <span className="d-block d-md-inline">More than capital</span>{' '}
-                <span style={{ color: '#8A3E9D', fontStyle: 'italic' }} className="d-block d-md-inline">
-                  A long-term partnership.
-                </span>
-              </h1>
-              
-              {/* Description Text */}
-              <div 
-                className="service-description" 
-                style={{ 
-                  maxWidth: '860px',
-                  fontFamily: 'Plus Jakarta Sans, sans-serif',
-                  fontWeight: 500,
-                  fontSize: '16px',
-                  lineHeight: '180%',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  color: '#6c757d',
-                  margin: '0 auto',
-                  padding: '0 15px'
-                }}
-              >
-                Our role evolves with each business, always focused on building strength and resilience.
-                <br />
-                We don't follow a fixed playbook. Every business is different, and our involvement adapts to what truly helps
-                <br />
-                at that stage—whether it's strategic direction, governance support, or long-term planning.
-              </div>
-            </Col>
-          </Row>
-
-          {/* Add responsive styles */}
-          <style>{`
-            @media (max-width: 768px) {
-              .service-header h1 {
-                text-align: left !important;
-              }
-              .service-description {
-                text-align: left !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-              }
-            }
-          `}</style>
-
-          {/* Service Cards */}
-          <Row className="g-3">
-            {/* Card 1 - Long-Term Capital Partnership */}
-            <Col xs={12} md={6} lg={4}>
-              <Card 
-                className="border-0 h-100"
-                style={{
-                  background: 'linear-gradient(144.67deg, #030140 -2.61%, #783691 50.99%, #8A3E9D 51.88%, #7C3894 55.03%, #AB4EB2 124.89%, #B553B9 155.17%)',
-                  borderRadius: '24px',
-                  width: '100%',
-                  border: '2px solid transparent'
-                }}
-              >
-                <Card.Body 
-                  className="text-white d-flex flex-column"
-                  style={{
-                    padding: '32px 40px',
-                    minHeight: '211px'
-                  }}
-                >
-                  {/* Header with Line */}
-                  <div className="d-flex align-items-center mb-3 mt-2">
-                    <div 
-                      style={{
-                        width: '40px',
-                        height: '2px',
-                        backgroundColor: 'white',
-                        marginRight: '12px'
-                      }}
-                    ></div>
-                    <h5 
-                      className="mb-0 mt-2 text-uppercase"
-                      style={{
-                        fontSize: '12px',
-                        fontWeight: 600,
-                        letterSpacing: '1.5px',
-                        fontFamily: 'Manrope, sans-serif'
-                      }}
-                    >
-                      LONG-TERM CAPITAL<br />PARTNERSHIP
-                    </h5>
-                  </div>
-                  
-                  {/* Card Text */}
-                  <p 
-                    className="mb-0"
-                    style={{
-                      fontFamily: 'Plus Jakarta Sans, sans-serif',
-                      fontWeight: 400,
-                      fontSize: '15px',
-                      lineHeight: '1.6'
-                    }}
-                  >
-                    Patient capital with a long-term horizon—free from pressure for early exits.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            {/* Card 2 - Strategic Guidance */}
-            <Col xs={12} md={6} lg={4}>
-              <Card 
-                className="border-0 h-100"
-                style={{
-                  background: 'linear-gradient(144.67deg, #030140 -2.61%, #783691 50.99%, #8A3E9D 51.88%, #7C3894 55.03%, #AB4EB2 124.89%, #B553B9 155.17%)',
-                  borderRadius: '24px',
-                  width: '100%',
-                  border: '2px solid transparent'
-                }}
-              >
-                <Card.Body 
-                  className="text-white d-flex flex-column"
-                  style={{
-                    padding: '32px 40px',
-                    minHeight: '211px'
-                  }}
-                >
-                  {/* Header with Line */}
-                  <div className="d-flex align-items-center mb-3 mt-2">
-                    <div 
-                      style={{
-                        width: '40px',
-                        height: '2px',
-                        backgroundColor: 'white',
-                        marginRight: '12px'
-                      }}
-                    ></div>
-                    <h5 
-                      className="mb-0 text-uppercase mt-2"
-                      style={{
-                        fontSize: '12px',
-                        fontWeight: 600,
-                        letterSpacing: '1.5px',
-                        fontFamily: 'Manrope, sans-serif'
-                      }}
-                    >
-                      STRATEGIC GUIDANCE
-                    </h5>
-                  </div>
-                  
-                  {/* Card Text */}
-                  <p 
-                    className="mb-0"
-                    style={{
-                      fontFamily: 'Plus Jakarta Sans, sans-serif',
-                      fontWeight: 400,
-                      fontSize: '15px',
-                      lineHeight: '1.6'
-                    }}
-                  >
-                    Support on planning, growth direction, capital allocation, and long-term decision-making.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            {/* Card 3 - Governance & Leadership Support */}
-            <Col xs={12} md={6} lg={4}>
-              <Card 
-                className="border-0 h-100"
-                style={{
-                  background: 'linear-gradient(144.67deg, #030140 -2.61%, #783691 50.99%, #8A3E9D 51.88%, #7C3894 55.03%, #AB4EB2 124.89%, #B553B9 155.17%)',
-                  borderRadius: '24px',
-                  width: '100%',
-                  border: '2px solid transparent'
-                }}
-              >
-                <Card.Body 
-                  className="text-white d-flex flex-column"
-                  style={{
-                    padding: '32px 40px',
-                    minHeight: '211px'
-                  }}
-                >
-                  {/* Header with Line */}
-                  <div className="d-flex align-items-center mb-3 mt-2">
-                    <div 
-                      style={{
-                        width: '40px',
-                        height: '2px',
-                        backgroundColor: 'white',
-                        marginRight: '12px'
-                      }}
-                    ></div>
-                    <h5 
-                      className="mb-0 text-uppercase mt-2"
-                      style={{
-                        fontSize: '12px',
-                        fontWeight: 600,
-                        letterSpacing: '1.5px',
-                        fontFamily: 'Manrope, sans-serif'
-                      }}
-                    >
-                      GOVERNANCE &<br />LEADERSHIP SUPPORT
-                    </h5>
-                  </div>
-                  
-                  {/* Card Text */}
-                  <p 
-                    className="mb-0"
-                    style={{
-                      fontFamily: 'Plus Jakarta Sans, sans-serif',
-                      fontWeight: 400,
-                      fontSize: '15px',
-                      lineHeight: '1.6'
-                    }}
-                  >
-                    Clear governance structures and leadership alignment that scale with the business.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
       {/* Get In Touch Section */}
       <div 
         className="d-flex align-items-center"
@@ -718,4 +469,4 @@ const Service = () => {
   )
 }
 
-export default Service
+export default Contact

@@ -1,12 +1,15 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
+import WaykenLogo from '../../assets/WaykenLogo.png'
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const navLinkStyle = {
     fontFamily: 'Manrope, sans-serif',
@@ -27,6 +30,22 @@ const Header = () => {
     setExpanded(false)
   }
 
+  const handlePortfolioClick = () => {
+    setExpanded(false)
+    
+    // Navigate to home page first, then scroll to section
+    navigate('/')
+    setTimeout(() => {
+      const element = document.getElementById('portfolio-section')
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }, 100)
+  }
+
   return (
     <Navbar 
       expand="lg" 
@@ -37,29 +56,15 @@ const Header = () => {
       collapseOnSelect
     >
       <Container>
-        <Navbar.Brand as={NavLink} to="/" className="d-flex flex-column">
-          <span 
-            className="fw-bold text-dark" 
+        <Navbar.Brand as={NavLink} to="/">
+          <img 
+            src={WaykenLogo} 
+            alt="Wayken Holdings" 
             style={{ 
-              fontFamily: 'Manrope, sans-serif',
-              fontSize: '1.5rem', 
-              letterSpacing: '0.15em',
-              fontWeight: 700
+              height: '40px',
+              width: 'auto'
             }}
-          >
-            WAYKEN
-          </span>
-          <small 
-            className="text-secondary" 
-            style={{ 
-              fontFamily: 'Manrope, sans-serif',
-              fontSize: '0.6rem', 
-              letterSpacing: '0.2em',
-              fontWeight: 500
-            }}
-          >
-            HOLDINGS
-          </small>
+          />
         </Navbar.Brand>
 
         <Navbar.Toggle 
@@ -94,33 +99,45 @@ const Header = () => {
             >
               Service
             </NavLink>
-            <NavLink 
-              to="/portfolio" 
-              className="nav-link mx-lg-2 my-2 my-lg-0"
-              style={({ isActive }) => getNavLinkStyle(isActive)}
-              onClick={handleNavClick}
+            <button
+              className="nav-link mx-lg-2 my-2 my-lg-0 border-0 bg-transparent text-start w-100 d-flex align-items-center"
+              style={{
+                ...navLinkStyle,
+                borderBottom: '2px solid transparent',
+                paddingBottom: '4px',
+                paddingLeft: '0',
+                paddingRight: '0',
+                color: '#6b7280',
+                cursor: 'pointer'
+              }}
+              onClick={handlePortfolioClick}
             >
               Portfolio
-            </NavLink>
-            <NavLink 
-              to="/blog" 
-              className="nav-link mx-lg-2 my-2 my-lg-0"
-              style={({ isActive }) => getNavLinkStyle(isActive)}
-              onClick={handleNavClick}
-            >
-              Blog
-            </NavLink>
+            </button>
           </Nav>
 
           <div className="py-3 py-lg-0">
-            <Button 
-              variant="outline-dark" 
-              className="rounded-pill px-4"
-              style={navLinkStyle}
-              onClick={handleNavClick}
-            >
-              Get In Touch
-            </Button>
+            <Link to="/contact" style={{ textDecoration: 'none' }}>
+              <Button 
+                className="rounded-pill"
+                style={{
+                  background: 'linear-gradient(165.39deg, #030140 0%, #4F2374 50.48%, #A54BAE 100%)',
+                  border: 'none',
+                  width: '158px',
+                  height: '48px',
+                  padding: '13px 32px',
+                  borderRadius: '50px',
+                  fontFamily: 'Manrope, sans-serif',
+                  fontWeight: 500,
+                  fontSize: '14px',
+                  lineHeight: '100%',
+                  color: 'white'
+                }}
+                onClick={handleNavClick}
+              >
+                Get In Touch
+              </Button>
+            </Link>
           </div>
         </Navbar.Collapse>
       </Container>
